@@ -195,16 +195,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:fusion/services/login_service.dart';
+// import 'package:fusion/services/login_service.dart';
 import 'package:fusion/services/service_locator.dart';
 import 'package:fusion/services/storage_service.dart';
-import 'package:flutter/material.dart';
-import 'package:fusion/Components/appBar.dart';
-import 'package:fusion/Components/side_drawer.dart';
+// import 'package:fusion/Components/appBar.dart';
+import 'package:fusion/Components/appBar2.dart';
+import 'package:fusion/Components/side_drawer2.dart';
+import 'package:fusion/Components/bottom_navigation_bar.dart';
+// import 'package:fusion/Components/side_drawer.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fusion/screens/Courses/course_home.dart';
 
 class RegisteredCoursesHome extends StatefulWidget {
   @override
@@ -223,6 +224,7 @@ class Course {
 class _RegisteredCoursesHomeState extends State<RegisteredCoursesHome> {
   late String name;
   late String depttype;
+  late String curr_desig;
   late List<Course> registeredCourses = [];
 
   // Function to fetch users based on type and optionally ID
@@ -309,6 +311,7 @@ class _RegisteredCoursesHomeState extends State<RegisteredCoursesHome> {
     depttype = service.profileData.profile!['department']!['name'] +
         " " +
         service.profileData.profile!['user_type'];
+    curr_desig = service.getFromDisk("Current_designation");
 
     // Determine user type and potentially user ID (logic can be improved)
     final userType = service.profileData.profile!['user_type'];
@@ -352,8 +355,16 @@ class _RegisteredCoursesHomeState extends State<RegisteredCoursesHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar().buildAppBar(),
-      drawer: SideDrawer(),
+      appBar: CustomAppBar(
+          curr_desig: curr_desig,
+          headerTitle: "Courses",
+          onDesignationChanged: (newValue) {
+            setState(() {
+              curr_desig = newValue;
+            });
+          }),
+      drawer: SideDrawer(curr_desig: curr_desig),
+      bottomNavigationBar: MyBottomNavigationBar(),
       body: ListView(
         shrinkWrap: true,
         physics: ClampingScrollPhysics(),

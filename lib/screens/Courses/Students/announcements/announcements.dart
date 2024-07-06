@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:fusion/Components/appBar.dart';
 import 'package:fusion/Components/side_drawer.dart';
 
-class Announcement extends StatefulWidget {
+class Announcementstd extends StatefulWidget {
   @override
   _AnnouncementState createState() => _AnnouncementState();
 }
 
-class _AnnouncementState extends State<Announcement> {
+class _AnnouncementState extends State<Announcementstd> {
   bool _loading = true;
   late String name;
   late String depttype;

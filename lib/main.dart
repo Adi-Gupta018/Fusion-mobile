@@ -49,7 +49,7 @@ import 'package:fusion/screens/Courses/Registered_Courses_Home.dart';
 import 'package:fusion/screens/Courses/course_home.dart';
 import 'package:fusion/screens/Courses/Students/progress/progress.dart';
 import 'package:fusion/screens/Courses/Students/course_content/course_content.dart';
-import 'package:fusion/screens/Courses/Students/announcements/announcements.dart';
+// import 'package:fusion/screens/Courses/Students/announcements/announcements.dart';
 import 'package:fusion/screens/Courses/Students/assignments/assignments.dart';
 import 'package:fusion/screens/Courses/Instructor/content/course_contentIns.dart';
 import 'package:fusion/screens/Courses/Students/assignments/upload_assignment.dart';
@@ -60,6 +60,7 @@ import 'package:fusion/screens/Courses/Acad_admin/timetablepage.dart';
 import 'package:fusion/screens/Courses/Instructor/evaluation/evaluation.dart';
 import 'package:fusion/screens/Courses/Instructor/evaluation/grading_scheme.dart';
 import 'package:fusion/screens/Courses/Instructor/evaluation/submissions.dart';
+import 'package:fusion/screens/Courses/Students/announcements/announcements.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -78,7 +79,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MediaQueryData windowData =
-    MediaQueryData.fromView(WidgetsBinding.instance.window);
+        MediaQueryData.fromView(WidgetsBinding.instance.window);
     windowData = windowData.copyWith(
       textScaler: TextScaler.linear(1),
     );
@@ -99,9 +100,9 @@ class MyApp extends StatelessWidget {
         routes: {
           '/landing': (context) => LandingPage(),
           '/login_page': (context) => LoginPage(),
-          '/notification':(context)=>Notify(),
-          '/news':(context)=>News(),
-          '/announcement':(context)=>Announcement(),
+          '/notification': (context) => Notify(),
+          '/news': (context) => News(),
+          '/announcement': (context) => Announcement(),
           '/dashboard': (context) => Dashboard(),
           '/academic_home_page': (context) => AcademicHomePage(
               ModalRoute.of(context)!.settings.arguments.toString()),
@@ -154,7 +155,7 @@ class MyApp extends StatelessWidget {
           '/registered_courses/course_home/course_content': (context) =>
               CourseContent(),
           '/registered_courses/course_home/announcement': (context) =>
-              Announcement(),
+              Announcementstd(),
           '/registered_courses/course_home/assignment': (context) =>
               Assignment(),
           '/registered_courses/course_home/instructor/course_content':
